@@ -45,6 +45,9 @@ while(player1.life > 0 && player2.life > 0) {
 	} else {
 		player1.life--;
 		console.log(player1.name + " has " + player1.life + " lives and " + player2.name + " has " + player2.life + " lives");
+		if (player1.life === 0) {
+			break;
+		}
 	}
 
 	operator = randomOperator();
