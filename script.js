@@ -27,58 +27,65 @@ var randomOperator = function() {
 	};
 };
 
-while(player1.life > 0 && player2.life > 0) {
-	var operator = randomOperator();
-	var num1 = randomNumber();
-	var num2 = randomNumber();
-	var correct = 0;
-	var ans = Number(prompt(player1.name + ": what is the value of " + num1 + " " + operator + " " + num2));
-	if (operator === "+") {
-		correct = num1 + num2;
-	} else if (operator === "-") {
-		correct = num1 - num2;
-	} else {
-		correct = num1 * num2;
-	}
-	if (correct === ans) {
-		player1.score++;
-	} else {
-		player1.life--;
-		console.log(player1.name + " has " + player1.life + " lives and " + player2.name + " has " + player2.life + " lives");
-		if (player1.life === 0) {
-			break;
+do {
+	player1.life = 3;
+	player2.life = 3;
+	while(player1.life > 0 && player2.life > 0) {
+		var operator = randomOperator();
+		var num1 = randomNumber();
+		var num2 = randomNumber();
+		var correct = 0;
+		var ans = Number(prompt(player1.name + ": what is the value of " + num1 + " " + operator + " " + num2));
+		if (operator === "+") {
+			correct = num1 + num2;
+		} else if (operator === "-") {
+			correct = num1 - num2;
+		} else {
+			correct = num1 * num2;
 		}
-	}
+		if (correct === ans) {
+			player1.score++;
+		} else {
+			player1.life--;
+			console.log(player1.name + " has " + player1.life + " lives and " + player2.name + " has " + player2.life + " lives");
+			if (player1.life === 0) {
+				break;
+			}
+		}
 
-	operator = randomOperator();
-	num1 = randomNumber();
-	num2 = randomNumber();
-	correct = 0;
-	ans = Number(prompt(player2.name + ": what is the value of " + num1 + " " + operator + " " + num2));
-	if (operator === "+") {
-		correct = num1 + num2;
-	} else if (operator === "-") {
-		correct = num1 - num2;
-	} else {
-		correct = num1 * num2;
-	}
-	if (correct === ans) {
-		player2.score++;
-	} else {
-		player2.life--;
-		//console.log(player1.name + "'s score is " + player1.score + " and " + player2.name + "'s score is " + player2.score);
-		console.log(player1.name + " has " + player1.life + " lives and " + player2.name + " has " + player2.life + " lives");
-	}
+		operator = randomOperator();
+		num1 = randomNumber();
+		num2 = randomNumber();
+		correct = 0;
+		ans = Number(prompt(player2.name + ": what is the value of " + num1 + " " + operator + " " + num2));
+		if (operator === "+") {
+			correct = num1 + num2;
+		} else if (operator === "-") {
+			correct = num1 - num2;
+		} else {
+			correct = num1 * num2;
+		}
+		if (correct === ans) {
+			player2.score++;
+		} else {
+			player2.life--;
+			//console.log(player1.name + "'s score is " + player1.score + " and " + player2.name + "'s score is " + player2.score);
+			console.log(player1.name + " has " + player1.life + " lives and " + player2.name + " has " + player2.life + " lives");
+		}
 
-} 
+	} 
+
+	if (player1.life === 0) {
+		console.log(player1.name + " has lost!");
+	} else {
+		console.log(player2.name + " has lost!");
+	}
+	console.log(player1.name + "'s score is " + player1.score + " and " + player2.name + "'s score is " + player2.score);
+} while (prompt("Do you want to play again? yes to restart or any other response to terminate the game") === "yes");
 
 console.log("Game Over!");
-if (player1.life === 0) {
-	console.log(player1.name + " has lost!");
-} else {
-	console.log(player2.name + " has lost!");
-}
-console.log(player1.name + "'s score is " + player1.score + " and " + player2.name + "'s score is " + player2.score);
+
+
 
 
 
