@@ -38,6 +38,7 @@ do {
 	var currentPlayer = 1;
 	player1.reset();
 	player2.reset();
+
 	while(player1.isAlive() && player2.isAlive()) {
 		var player;
 		if (currentPlayer === 1) {
@@ -45,6 +46,7 @@ do {
 		} else {
 			player = player2;
 		}
+		
 		var operator = randomOperator();
 		var num1 = randomNumber();
 		var num2 = randomNumber();
@@ -57,12 +59,14 @@ do {
 		} else {
 			correct = num1 * num2;
 		}
+
 		if (correct === ans) {
 			player.score++;
 		} else {
 			player.lives--;
 			console.log(player1.name + " has " + player1.lives + " lives and " + player2.name + " has " + player2.lives + " lives");
 		}
+
 		currentPlayer = (currentPlayer + 1) % 2;
 	} 
 
