@@ -1,6 +1,6 @@
 @player1_lives = 3
 @player2_lives = 3
-current_player = 1
+@current_player = 1
 
 def check_lives
 	return ((@player1_lives > 0) && (@player2_lives > 0)) ? true : false
@@ -14,16 +14,16 @@ def get_answer(operator, x, y)
 	else
 		operator = ' x '
 	end
-	puts "Player #{current_player}: What does #{x}#{operator}#{y} equal?"
+	puts "Player #{@current_player}: What does #{x}#{operator}#{y} equal?"
 	gets.chomp.to_i
 end
 
 def switch_player
-	if current_player == 1
-		current_player = 2
+	if @current_player == 1
+		@current_player = 2
 		puts "You have #{@player1_lives} lives remaining"
 	else
-		current_player = 1
+		@current_player = 1
 		puts "You have #{@player2_lives} lives remaining"
 	end
 end
@@ -46,7 +46,7 @@ def check_answer(ans, right_ans)
 	if ans == right_ans
 		puts "Correct."
 	else
-		if current_player == 1
+		if @current_player == 1
 			@player1_lives -= 1
 			puts "Wrong! #{@player1_lives} lives left!"
 		else
